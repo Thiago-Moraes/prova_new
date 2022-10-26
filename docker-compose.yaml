@@ -1,0 +1,20 @@
+version: "3.1"
+services:
+  app-front:
+    build: .
+    user: 1000:1000
+    container_name: app_front
+    ports:
+      - "3000:5173"
+    tty: true
+    volumes:
+      - ./front:/app/front
+    networks:
+      - app-network
+    entrypoint: "npm run dev -- --host"
+networks:
+  app-network:
+    driver: bridge
+
+
+    
